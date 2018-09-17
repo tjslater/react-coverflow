@@ -10,9 +10,6 @@ import ReactDOM from 'react-dom';
 import Radium from 'radium';
 import styles from './stylesheets/coverflow';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
 let TOUCH = {
   move: false,
   lastX: 0,
@@ -45,7 +42,7 @@ class Coverflow extends Component {
       height: this.props.height || 'auto',
     };
   }
-  
+
   static propTypes = {
     children: PropTypes.node.isRequired,
     displayQuantityOfSide: PropTypes.number.isRequired,
@@ -81,9 +78,9 @@ class Coverflow extends Component {
         this.refs[figureID].addEventListener(event, HandleAnimationState.bind(this));
       }
     });
-    
+
     const eventListener = window && window.addEventListener;
-    
+
     if(eventListener) {
       window.addEventListener('resize', this.updateDimensions.bind(this));
     }
@@ -109,7 +106,7 @@ class Coverflow extends Component {
 
     // if(removeListener) {
     //   window.removeEventListener('resize', this.updateDimensions.bind(this));
-    // } 
+    // }
   }
 
   updateDimensions(active) {
@@ -144,7 +141,7 @@ class Coverflow extends Component {
       <div
         className={styles.container}
         style={
-          Object.keys(media).length !== 0 ? media : 
+          Object.keys(media).length !== 0 ? media :
           { width: `${width}px`, height: `${height}px` }
         }
         onWheel={enableScroll ? this._handleWheel.bind(this) : null}
